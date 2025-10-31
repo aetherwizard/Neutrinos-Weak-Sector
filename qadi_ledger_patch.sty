@@ -1,0 +1,14 @@
+% qadi_ledger_patch.sty
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{qadi_ledger_patch}[2025/10/30 Ledger superscript placement]
+
+\providecommand{\PowTwo}[1]{\mathop{\kern0pt #1}\nolimits^{2}}
+
+% Define a separate, known-good body so we can probe it later if needed.
+\newcommand{\LedgerOnePatched}{%
+  \ensuremath{\Au\,\curlapm \;=\; \PowTwo{F_{q}}\,\PowTwo{\lambda_{C}}}%
+}
+
+% IMPORTANT: redefine immediately (no AtBeginDocument), so this wins if loaded last.
+\providecommand{\LedgerOne}{}%
+\renewcommand{\LedgerOne}{\LedgerOnePatched}
